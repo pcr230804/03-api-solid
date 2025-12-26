@@ -5,6 +5,7 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     dir: "src",
+    globals: false,
     projects: [
       {
         extends: true,
@@ -20,9 +21,6 @@ export default defineConfig({
           dir: "src/http/controllers",
           environment:
             "./prisma/vitest-environment-prisma/prisma-test-environment.ts",
-          pool: "forks",
-          fileParallelism: false,
-          testTimeout: 30000,
         },
       },
     ],

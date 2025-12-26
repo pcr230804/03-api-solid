@@ -28,6 +28,14 @@ jobs:
 
       - run: npx prisma generate
 
+      - name: Wait for PostgreSQL
+        run: |
+          until PGPASSWORD=docker psql -h localhost -U docker -d apisolid -c '\q'; do
+            echo "Waiting for PostgreSQL..."
+            sleep 2
+          done
+          echo "PostgreSQL is ready!"
+
       - run: npm run test:e2e
         env:
           JWT_SECRET: testing
