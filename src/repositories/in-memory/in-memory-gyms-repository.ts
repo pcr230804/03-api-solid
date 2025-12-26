@@ -6,6 +6,7 @@ import type {
 } from "../gyms-repository.js";
 import { randomUUID } from "crypto";
 import { getDistanceBetweenCordinates } from "@/use-cases/utils/get-distance-between-coordinates.js";
+import { Decimal } from "decimal.js";
 
 export class InMemoryGymsRepository implements GymsRepository {
   public items: Gym[] = [];
@@ -45,8 +46,8 @@ export class InMemoryGymsRepository implements GymsRepository {
       title: data.title,
       description: data.description ?? null,
       phone: data.phone ?? null,
-      latitude: new Prisma.Decimal(data.latitude.toString()),
-      longitude: new Prisma.Decimal(data.longitude.toString()),
+      latitude: new Decimal(data.latitude.toString()) as any,
+      longitude: new Decimal(data.longitude.toString()) as any,
       created_at: new Date(),
     };
 
