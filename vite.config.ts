@@ -5,6 +5,9 @@ export default defineConfig({
   plugins: [tsconfigPaths()],
   test: {
     dir: "src",
+    globals: false,
+    testTimeout: 60000, // 60 seconds max per test
+    hookTimeout: 30000, // 30 seconds max for beforeAll/afterAll
     projects: [
       {
         extends: true,
