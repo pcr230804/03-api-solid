@@ -20,6 +20,9 @@ export default defineConfig({
           dir: "src/http/controllers",
           environment:
             "./prisma/vitest-environment-prisma/prisma-test-environment.ts",
+          pool: "forks",
+          fileParallelism: false,
+          testTimeout: 30000,
         },
       },
     ],
