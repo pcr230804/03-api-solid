@@ -25,7 +25,9 @@ export default <Environment>{
 
     process.env.DATABASE_URL = databaseUrl;
 
-    execSync("npx prisma db push");
+    execSync("npx prisma db push --skip-generate --accept-data-loss", {
+      stdio: "inherit",
+    });
 
     return {
       async teardown() {
