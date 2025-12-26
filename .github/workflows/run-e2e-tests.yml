@@ -6,6 +6,7 @@ jobs:
   run-e2e-tests:
     name: Run E2E Tests
     runs-on: Ubuntu-latest
+    timeout-minutes: 15
 
     services:
       postgres:
